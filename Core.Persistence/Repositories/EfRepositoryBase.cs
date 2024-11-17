@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Core.Persistence.Dynamic;
+﻿using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Query;
+using System.Collections;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Core.Persistence.Repositories;
 
@@ -141,7 +135,7 @@ public class EfRepositoryBase<TEntity, TEntityId, TContext>
 
     #endregion
 
-    #region Repo
+    #region SyncRepo
 
     public TEntity Add(TEntity entity)
     {
