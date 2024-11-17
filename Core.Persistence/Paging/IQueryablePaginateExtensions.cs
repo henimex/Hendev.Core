@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Persistence.Paging;
 
-public static class QueryablePaginateExtensions
+public static class IQueryablePaginateExtensions
 {
     public static async Task<Paginate<T>> ToPaginateAsync<T>(this IQueryable<T> source, int index, int size, CancellationToken cancellationToken = default)
     {
