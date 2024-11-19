@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.CrosCuttingConcerns\Core.CrosCuttingConcerns.csproj" />
     <ProjectReference Include="..\Core.Persistence\Core.Persistence.csproj" />
   </ItemGroup>
 
