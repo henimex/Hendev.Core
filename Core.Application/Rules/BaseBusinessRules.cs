@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Applicaiton.Requests
+namespace Core.Application.Rules;
+
+public class BaseBusinessRules
 {
-    internal class PageRequest
-    {
-    }
+
 }
