@@ -1,9 +1,9 @@
-﻿using Core.CrosCuttingConcerns.Exceptions.Extensions;
-using Core.CrosCuttingConcerns.Exceptions.HttpProblemDetails;
-using Core.CrosCuttingConcerns.Exceptions.Types;
+﻿using Core.CrossCuttingConcerns.Exceptions.Extensions;
+using Core.CrossCuttingConcerns.Exceptions.HttpProblemDetails;
+using Core.CrossCuttingConcerns.Exceptions.Types;
 using Microsoft.AspNetCore.Http;
 
-namespace Core.CrosCuttingConcerns.Exceptions.Handlers;
+namespace Core.CrossCuttingConcerns.Exceptions.Handlers;
 
 public class HttpExceptionHandler : ExceptionHandler
 {

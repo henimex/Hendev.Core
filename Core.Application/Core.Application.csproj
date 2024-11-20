@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core.CrosCuttingConcerns\Core.CrosCuttingConcerns.csproj" />
+    <ProjectReference Include="..\Core.CrosCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\Core.Persistence\Core.Persistence.csproj" />
   </ItemGroup>
 
