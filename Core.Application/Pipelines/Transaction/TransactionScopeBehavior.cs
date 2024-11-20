@@ -1,9 +1,4 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace Core.Application.Pipelines.Transaction;
@@ -22,7 +17,7 @@ public class TransactionScopeBehavior<TRequest, TResponse> : IPipelineBehavior<T
             transactionScope.Complete();
 
         }
-		catch (Exception exception)
+		catch (Exception)
 		{
             transactionScope.Dispose();
             throw;
