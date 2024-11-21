@@ -3,28 +3,29 @@ using Core.CrossCuttingConcerns.Serilog.Messages;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
-namespace Core.CrossCuttingConcerns.Serilog.Logger;
+namespace Core.CrossCuttingConcerns.Serilog.Loggers;
 
-public class FileLogger:LoggerServiceBase
+public class FileLogger : LoggerServiceBase
 {
-    private readonly IConfiguration configuration;
+    private readonly IConfiguration _configuration;
 
     public FileLogger(IConfiguration configuration)
     {
-        this.configuration = configuration;
+        _configuration = configuration;
 
         FileLogConfiguration logConfig = configuration
-            .GetSection("Loggers:Serilog:Config:FileLogConfig")
-            .Get<FileLogConfiguration>() ?? 
-            throw new Exception(SerilogMessages.NullOptionsMessage);
+                                             .GetSection("Loggers:Serilog:FileLogging:Config")
+                                             .Get<FileLogConfiguration>() ??
+                                         throw new Exception(SerilogMessages.NullOptionsMessage);
 
-        string logFilePath = string.Format(format: "{0}{1}", arg0: Directory.GetCurrentDirectory() + logConfig.FolderPath, arg1: ".txt");
+        string logFilePath = string.Format(format: "{0}{1}", arg0: Directory.GetCurrentDirectory() + logConfig.FolderPath, arg1:".txt");
+        Console.WriteLine(logFilePath);
 
         Logger = new LoggerConfiguration().WriteTo.File(
             logFilePath, rollingInterval: RollingInterval.Day,
             retainedFileCountLimit: null,
             fileSizeLimitBytes: 5000000,
-            outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}"
+            outputTemplate: "{Timestamp:yyyy.MM.dd HH:mm:ss zzz} [{Level}] {Message}{NewLine}{Exception}"
         ).CreateLogger();
     }
 }
