@@ -23,19 +23,21 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
     {
         List<LogParameter> logParameters = new()
         {
-            new LogParameter {Type = request.GetType().Name, Value = request}
+            new LogParameter
+            {
+                Name = request.GetType().Name,
+                Type = _httpContextAccessor.HttpContext?.Request?.Method ?? "NoData",
+                Value = request,
+            }
         };
 
         LogDetail logDetail = new()
         {
+            FullName = request.GetType().FullName ?? "NoData",
             MethodName = request.GetType().Name,
             Parameters = logParameters,
-            User = _httpContextAccessor.HttpContext.User.Identity?.Name ?? "?"
+            User = _httpContextAccessor.HttpContext?.User?.Identity?.Name ?? "NoData"
         };
-
-        Console.WriteLine(logDetail.MethodName);
-        Console.WriteLine(logDetail.Parameters);
-        Console.WriteLine(logDetail.User);
 
         _loggerServiceBase.Info(JsonSerializer.Serialize(logDetail));
         return await next();
